@@ -21,7 +21,7 @@ import os
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
-newsapi = "f502cf830ef94ddea26fc05e90e87096"
+newsapi = "YOUR_NEWS_API"
 
 
 def speak_old(text):
@@ -50,7 +50,7 @@ def speak(text):
 
 def aiProcess(command):
     client = genai.Client(
-        api_key="AIzaSyBCTEt091GYjTIpe3dqwB6z1K82F7jBFmc"
+        api_key="YOUR_GENAI_API"
     )
 
     response = client.models.generate_content(
