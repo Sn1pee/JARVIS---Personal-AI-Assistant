@@ -3,7 +3,7 @@ import webbrowser
 import pyttsx3
 import musicLibrary
 import requests
-from google import genai
+from openai import OpenAI
 from gtts import gTTS
 import pygame
 import os
@@ -21,7 +21,7 @@ import os
 
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
-newsapi = "YOUR_NEWS_API_KEY"
+newsapi = os.getenv("NEWS_API")
 
 
 def speak_old(text):
@@ -49,14 +49,32 @@ def speak(text):
     os.remove("hello.mp3")
 
 def aiProcess(command):
-    client = genai.Client(
-        api_key="YOUR_GEMINI_API_KEY"
+    token = os.environ["GITHUB_TOKEN"]
+    endpoint = "https://models.github.ai/inference"
+    model = "openai/gpt-4.1"
+
+    client = OpenAI(
+        base_url=endpoint,
+        api_key=token,
     )
 
-    response = client.models.generate_content(
-        model="gemini-2.0-flash", contents=command
+    response = client.chat.completions.create(
+        messages=[
+            {
+                "role": "system",
+                "content": "You are a virtual assistant named jarvis skilled in general tasks like Alexa and Google Cloud",
+            },
+            {
+                "role": "user",
+                "content": command,
+            }
+        ],
+        temperature=1.0,
+        top_p=1.0,
+        model=model
     )
-    return response.text
+
+    return response.choices[0].message.content
 
 def processCommand(c):
     if "open google" in c.lower():
@@ -85,7 +103,7 @@ def processCommand(c):
                 speak(article['title'])
     
     else:
-        # Let GenAI handle the request
+        # Let OpenAI handle the command
         output = aiProcess(c)
         speak(output)
 
