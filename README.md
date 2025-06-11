@@ -53,9 +53,9 @@ pip install SpeechRecognition gTTS pyttsx3 pygame requests openai
 
 Update the following in `main.py` and `client.py`:
 
-- **Google OpenAI API key**:
+- **OpenAI API key**:
   ```python
-  api_key="YOUR_OpenAI_API_KEY"
+  token = " YOUR_OpenAI_API_KEY"
   ```
 
 - **NewsAPI key**:
