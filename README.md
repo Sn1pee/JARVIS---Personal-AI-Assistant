@@ -1,6 +1,6 @@
-# 🧠 Jarvis - Voice Controlled Assistant with Gemini AI
+# 🧠 Jarvis - Voice Controlled Assistant with Open AI
 
-Jarvis is a Python-based personal voice assistant that listens to your voice commands, responds using Google Text-to-Speech, performs web-based actions, and leverages Google's Gemini AI to answer questions.
+Jarvis is a Python-based personal voice assistant that listens to your voice commands, responds using Google Text-to-Speech, performs web-based actions, and leverages Open AI to answer questions.
 
 ## 📋 Features
 
@@ -8,7 +8,7 @@ Jarvis is a Python-based personal voice assistant that listens to your voice com
 * Play specific songs via YouTube
 * Open websites like Google, YouTube, LinkedIn
 * Fetch top news headlines using NewsAPI
-* AI-powered answers using Google Gemini
+* AI-powered answers using ChatGPT
 * Converts responses to speech using gTTS
 
 ## 🛠 Requirements
@@ -19,14 +19,14 @@ Jarvis is a Python-based personal voice assistant that listens to your voice com
 * pyttsx3: `pip install pyttsx3`
 * pygame: `pip install pygame`
 * requests: `pip install requests`
-* Google Gemini SDK: `pip install google-generativeai`
+* OpenAI SDK: `pip install openai`
 
 ## 📁 Folder Structure
 
 ```
 jarvis-voice-assistant/
 ├── main.py            # Main assistant logic and command handling
-├── client.py          # Gemini API test script
+├── client.py          # OpenAI API test script
 ├── musicLibrary.py    # Song dictionary with YouTube links
 └── README.md          # Project overview and instructions
 ```
@@ -45,9 +45,9 @@ pip install SpeechRecognition gTTS pyttsx3 pygame requests google-generativeai
 
 Update the following in `main.py` and `client.py`:
 
-- **Google Gemini API key**:
+- **Google OpenAI API key**:
   ```python
-  api_key="YOUR_GEMINI_API_KEY"
+  api_key="YOUR_OpenAI_API_KEY"
   ```
 
 - **NewsAPI key**:
@@ -79,13 +79,13 @@ python main.py
   - Web actions via `webbrowser`
   - Music using predefined links
   - News using NewsAPI
-  - Conversations via Gemini AI
+  - Conversations via OpenAI
 * Speaks response using `gTTS` and `pygame`
 
-## 🧠 AI Integration (Gemini)
+## 🧠 AI Integration (OpenAI)
 
-* Uses Google's `genai.Client` to generate responses
-* Model: `gemini-2.0-flash`
+* Uses ChatGPT's `client` to generate responses
+* model = `openai/gpt4.1`
 * Works for both factual and conversational queries
 
 ## 🎵 Music Library Sample
